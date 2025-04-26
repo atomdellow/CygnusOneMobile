@@ -1,4 +1,7 @@
 ﻿using Microsoft.Extensions.Logging;
+using CygnusOneMobile.Services;
+using CygnusOneMobile.ViewModels;
+using CygnusOneMobile.Views;
 
 namespace CygnusOneMobile
 {
@@ -14,6 +17,15 @@ namespace CygnusOneMobile
                     fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
                     fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
                 });
+
+            // Register services
+            builder.Services.AddSingleton<ApiService>();
+
+            // Register view models
+            builder.Services.AddTransient<ArticlesViewModel>();
+
+            // Register pages
+            builder.Services.AddTransient<ArticlesPage>();
 
 #if DEBUG
     		builder.Logging.AddDebug();
