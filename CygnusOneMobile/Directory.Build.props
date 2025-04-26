@@ -1,0 +1,9 @@
+<Project>
+  <PropertyGroup>
+    <AndroidTargetFrameworkVersion>v13.0</AndroidTargetFrameworkVersion>
+    <AndroidTargetApiLevel>33</AndroidTargetApiLevel>
+    <AndroidCompileSDKVersion>33</AndroidCompileSDKVersion>
+    <!-- Explicitly set TargetFrameworkVersion to override any SDK defaults -->
+    <TargetFrameworkVersion>v13.0</TargetFrameworkVersion>
+  </PropertyGroup>
+</Project>

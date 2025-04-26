@@ -1,0 +1,13 @@
+<Project>
+  <PropertyGroup>
+    <!-- Force Android ACW compilation to use API level 28 -->
+    <AndroidApiLevel>28</AndroidApiLevel>
+    <AndroidTargetApiLevel>28</AndroidTargetApiLevel>
+    <AndroidFrameworkVersion>v9.0</AndroidFrameworkVersion>
+    <AndroidUseLatestPlatformSdk>False</AndroidUseLatestPlatformSdk>
+    <AndroidSdkBuildToolsVersion>28.0.3</AndroidSdkBuildToolsVersion>
+    <MonoAndroidToolsDirectory>$(MSBuildProgramFiles32)\MSBuild\Xamarin\Android</MonoAndroidToolsDirectory>
+    <!-- This is the key property to override the API level for ACW compilation -->
+    <AndroidPlatformId>28</AndroidPlatformId>
+  </PropertyGroup>
+</Project>

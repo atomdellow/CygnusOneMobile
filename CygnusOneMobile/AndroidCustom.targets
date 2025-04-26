@@ -1,0 +1,36 @@
+<Project>
+  <!-- Force using our Android SDK versions instead of the ones from Microsoft.Android.Sdk.Windows -->
+  <PropertyGroup>
+    <!-- Explicitly set all Android SDK related properties -->
+    <AndroidSdkDirectory>C:\NVPACK\android-sdk-windows</AndroidSdkDirectory>
+    <AndroidSdkPlatform>android-28</AndroidSdkPlatform>
+    <AndroidSdkPlatformVersion>28</AndroidSdkPlatformVersion>
+    <AndroidApiLevel>28</AndroidApiLevel>
+    <AndroidPlatformId>28</AndroidPlatformId>
+    <AndroidTargetSdkVersion>28</AndroidTargetSdkVersion>
+    <AndroidFrameworkVersion>v9.0</AndroidFrameworkVersion>
+  </PropertyGroup>
+  
+  <!-- Override the _ResolveAndroidSdkTooling target to use our paths -->
+  <Target Name="_ResolveAndroidSdkTooling" Returns="@(_ResolvedAndroidSdkDirectories)">
+    <PropertyGroup>
+      <AndroidSdkDirectory Condition="'$(AndroidSdkDirectory)'==''">$(ANDROID_HOME)</AndroidSdkDirectory>
+      <AndroidSdkDirectory Condition="'$(AndroidSdkDirectory)'==''">$(ANDROID_SDK_ROOT)</AndroidSdkDirectory>
+      <AndroidSdkDirectory Condition="'$(AndroidSdkDirectory)'==''">C:\NVPACK\android-sdk-windows</AndroidSdkDirectory>
+    </PropertyGroup>
+    <ItemGroup>
+      <_ResolvedAndroidSdkDirectories Include="$(AndroidSdkDirectory)">
+        <AndroidApiLevel>28</AndroidApiLevel>
+        <AndroidApiLevelName>28</AndroidApiLevelName>
+        <AndroidNdkVersion>$(AndroidNdkVersion)</AndroidNdkVersion>
+        <AndroidSdkBuildToolsVersion>$(AndroidSdkBuildToolsVersion)</AndroidSdkBuildToolsVersion>
+        <AndroidSdkBuildToolsPath>$(AndroidSdkDirectory)\build-tools\$(AndroidSdkBuildToolsVersion)</AndroidSdkBuildToolsPath>
+        <AndroidSdkPath>$(AndroidSdkDirectory)</AndroidSdkPath>
+        <AndroidSdkPlatformToolsPath>$(AndroidSdkDirectory)\platform-tools</AndroidSdkPlatformToolsPath>
+        <AndroidSdkToolsPath>$(AndroidSdkDirectory)\tools</AndroidSdkToolsPath>
+        <AndroidTargetSdkVersion>28</AndroidTargetSdkVersion>
+        <AndroidSdkPlatformsPath>$(AndroidSdkDirectory)\platforms</AndroidSdkPlatformsPath>
+      </_ResolvedAndroidSdkDirectories>
+    </ItemGroup>
+  </Target>
+</Project>
