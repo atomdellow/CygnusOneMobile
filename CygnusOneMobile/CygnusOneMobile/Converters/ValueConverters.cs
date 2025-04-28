@@ -1,5 +1,6 @@
 using System;
 using System.Globalization;
+using Microsoft.Maui.Controls; // Added missing import for IValueConverter
 
 namespace CygnusOneMobile.Converters
 {

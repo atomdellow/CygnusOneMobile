@@ -128,11 +128,14 @@ namespace CygnusOneMobile.Services
         {
             try
             {
+                // Use await with the ClearSessionAsync method
                 await ClearSessionAsync();
                 
                 // Force the clear by setting null values
-                SecureStorage.Default.Remove(_tokenKey);
-                Preferences.Default.Clear();
+                await Task.Run(() => {
+                    SecureStorage.Default.Remove(_tokenKey);
+                    Preferences.Default.Clear();
+                });
                 
                 _logger?.Log("Session forcefully reset", LogLevel.Warning);
             }
