@@ -216,3 +216,7 @@ secrets.*.json
 
 # Xamarin specific
 Resource.designer.cs
+
+# Project specific ignores
+temp_repo/
+temp_repo/**

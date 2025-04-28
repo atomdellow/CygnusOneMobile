@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="CygnusOneMobile.Views.LoginPage"
+             Title="Login">
+    <ScrollView>
+        <VerticalStackLayout 
+            Spacing="25" 
+            Padding="30,0" 
+            VerticalOptions="Center">
+
+            <Image
+                Source="dotnet_bot.png"
+                HeightRequest="130"
+                HorizontalOptions="Center" />
+
+            <Label 
+                Text="Welcome to Cygnus One"
+                FontSize="28"
+                HorizontalOptions="Center" />
+
+            <Entry 
+                x:Name="EmailEntry"
+                Placeholder="Email"
+                Text="{Binding Email}"
+                Keyboard="Email" />
+
+            <!-- Password field with show/hide toggle -->
+            <Grid ColumnDefinitions="*,Auto">
+                <Entry 
+                    Grid.Column="0"
+                    x:Name="PasswordEntry"
+                    Placeholder="Password"
+                    IsPassword="True"
+                    Text="{Binding Password}" />
+                <Button 
+                    Grid.Column="1"
+                    x:Name="TogglePasswordButton"
+                    Text="👁️" 
+                    Command="{Binding TogglePasswordVisibilityCommand}"
+                    WidthRequest="40"
+                    HeightRequest="40"
+                    Padding="0"
+                    Margin="5,0,0,0" />
+            </Grid>
+
+            <Label 
+                Text="{Binding ErrorMessage}"
+                FontSize="14"
+                TextColor="Red"
+                IsVisible="{Binding HasErrorMessage}" />
+
+            <!-- Login Button with explicit text -->
+            <Button 
+                x:Name="LoginButton"
+                Text="Login"
+                Command="{Binding LoginCommand}"
+                IsEnabled="{Binding IsNotAuthenticating}"
+                BackgroundColor="#007BFF"
+                TextColor="White"
+                HorizontalOptions="Fill" />
+                
+            <!-- Register Button -->
+            <Button 
+                x:Name="RegisterButton"
+                Text="Register"
+                Command="{Binding RegisterCommand}"
+                BackgroundColor="#6c757d"
+                TextColor="White"
+                HorizontalOptions="Fill" />
+                
+            <!-- Loading indicator -->
+            <ActivityIndicator 
+                IsRunning="{Binding IsAuthenticating}" 
+                IsVisible="{Binding IsAuthenticating}"
+                HorizontalOptions="Center" />
+
+            <!-- Debug button - hidden in production -->
+            <Button 
+                x:Name="DebugButton"
+                Text="🛠️ Debug Tools"
+                Command="{Binding OpenDebugPageCommand}"
+                HorizontalOptions="Center"
+                BackgroundColor="#6c757d"
+                FontSize="12"
+                HeightRequest="30"
+                Margin="0,15,0,0" />
+
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

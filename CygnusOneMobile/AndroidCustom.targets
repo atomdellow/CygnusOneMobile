@@ -3,12 +3,12 @@
   <PropertyGroup>
     <!-- Explicitly set all Android SDK related properties -->
     <AndroidSdkDirectory>C:\NVPACK\android-sdk-windows</AndroidSdkDirectory>
-    <AndroidSdkPlatform>android-28</AndroidSdkPlatform>
-    <AndroidSdkPlatformVersion>28</AndroidSdkPlatformVersion>
-    <AndroidApiLevel>28</AndroidApiLevel>
-    <AndroidPlatformId>28</AndroidPlatformId>
-    <AndroidTargetSdkVersion>28</AndroidTargetSdkVersion>
-    <AndroidFrameworkVersion>v9.0</AndroidFrameworkVersion>
+    <AndroidSdkPlatform>android-34</AndroidSdkPlatform>
+    <AndroidSdkPlatformVersion>34</AndroidSdkPlatformVersion>
+    <AndroidApiLevel>34</AndroidApiLevel>
+    <AndroidPlatformId>34</AndroidPlatformId>
+    <AndroidTargetSdkVersion>34</AndroidTargetSdkVersion>
+    <AndroidFrameworkVersion>v14.0</AndroidFrameworkVersion>
   </PropertyGroup>
   
   <!-- Override the _ResolveAndroidSdkTooling target to use our paths -->
@@ -20,15 +20,15 @@
     </PropertyGroup>
     <ItemGroup>
       <_ResolvedAndroidSdkDirectories Include="$(AndroidSdkDirectory)">
-        <AndroidApiLevel>28</AndroidApiLevel>
-        <AndroidApiLevelName>28</AndroidApiLevelName>
+        <AndroidApiLevel>34</AndroidApiLevel>
+        <AndroidApiLevelName>34</AndroidApiLevelName>
         <AndroidNdkVersion>$(AndroidNdkVersion)</AndroidNdkVersion>
         <AndroidSdkBuildToolsVersion>$(AndroidSdkBuildToolsVersion)</AndroidSdkBuildToolsVersion>
         <AndroidSdkBuildToolsPath>$(AndroidSdkDirectory)\build-tools\$(AndroidSdkBuildToolsVersion)</AndroidSdkBuildToolsPath>
         <AndroidSdkPath>$(AndroidSdkDirectory)</AndroidSdkPath>
         <AndroidSdkPlatformToolsPath>$(AndroidSdkDirectory)\platform-tools</AndroidSdkPlatformToolsPath>
         <AndroidSdkToolsPath>$(AndroidSdkDirectory)\tools</AndroidSdkToolsPath>
-        <AndroidTargetSdkVersion>28</AndroidTargetSdkVersion>
+        <AndroidTargetSdkVersion>34</AndroidTargetSdkVersion>
         <AndroidSdkPlatformsPath>$(AndroidSdkDirectory)\platforms</AndroidSdkPlatformsPath>
       </_ResolvedAndroidSdkDirectories>
     </ItemGroup>

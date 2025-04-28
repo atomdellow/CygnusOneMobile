@@ -6,21 +6,29 @@
     xmlns:local="clr-namespace:CygnusOneMobile"
     xmlns:views="clr-namespace:CygnusOneMobile.Views"
     Shell.FlyoutBehavior="Disabled"
-    Title="CygnusOneMobile">
+    Shell.NavBarIsVisible="true">
 
-    <TabBar>
-        <Tab Title="Home">
-            <ShellContent
-                Title="Home"
-                ContentTemplate="{DataTemplate local:MainPage}"
-                Route="MainPage" />
-        </Tab>
-        
-        <Tab Title="Articles">
-            <ShellContent
+    <!-- Login Page - Shown when not authenticated -->
+    <ShellContent
+        x:Name="LoginContent"
+        Title="Login"
+        ContentTemplate="{DataTemplate views:LoginPage}"
+        Route="LoginPage" />
+
+    <!-- Main Tab Bar - Shown when authenticated -->
+    <TabBar x:Name="MainTabBar" IsVisible="false">
+        <Tab Title="Articles" Icon="book.png">
+            <ShellContent 
                 Title="Articles"
                 ContentTemplate="{DataTemplate views:ArticlesPage}"
                 Route="ArticlesPage" />
+        </Tab>
+        
+        <Tab Title="Debug" Icon="bug.png">
+            <ShellContent 
+                Title="Debug"
+                ContentTemplate="{DataTemplate views:DebugPage}"
+                Route="DebugRoute" />
         </Tab>
     </TabBar>
 </Shell>

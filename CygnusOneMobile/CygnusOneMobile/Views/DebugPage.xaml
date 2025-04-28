@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:views="clr-namespace:CygnusOneMobile.Views"
+             x:Class="CygnusOneMobile.Views.DebugPage"
+             Title="Debug Tools">
+    <ScrollView>
+        <VerticalStackLayout Padding="15">
+            <Label Text="🛠️ Debug Tools" 
+                   FontSize="24" 
+                   FontAttributes="Bold" 
+                   HorizontalOptions="Center"
+                   Margin="0,0,0,10"/>
+
+            <!-- API Connection Section -->
+            <Frame BorderColor="Gray" CornerRadius="5" Padding="10" Margin="0,0,0,15">
+                <VerticalStackLayout Spacing="10">
+                    <Label Text="🌐 API Connection" FontSize="18" FontAttributes="Bold"/>
+                    
+                    <Label Text="API URL" Margin="0,5,0,0"/>
+                    <Entry Text="{Binding ApiUrl}" Placeholder="Enter API URL"/>
+                    
+                    <Button Text="Test Connection" 
+                            Command="{Binding TestApiConnectionCommand}"
+                            BackgroundColor="#007bff"/>
+                    
+                    <Label Text="{Binding ConnectionStatus}" 
+                           TextColor="{Binding ConnectionStatusColor}" 
+                           FontAttributes="Bold"
+                           IsVisible="{Binding ConnectionStatus, Converter={StaticResource StringNotEmptyConverter}}"/>
+                </VerticalStackLayout>
+            </Frame>
+
+            <!-- Session Info Section -->
+            <Frame BorderColor="Gray" CornerRadius="5" Padding="10" Margin="0,0,0,15">
+                <VerticalStackLayout Spacing="10">
+                    <Label Text="👤 Session Info" FontSize="18" FontAttributes="Bold"/>
+                    
+                    <Grid ColumnDefinitions="Auto,*" RowDefinitions="Auto,Auto,Auto" RowSpacing="10" ColumnSpacing="10">
+                        <Label Grid.Row="0" Grid.Column="0" Text="User ID:" FontAttributes="Bold"/>
+                        <Label Grid.Row="0" Grid.Column="1" Text="{Binding UserId}"/>
+                        
+                        <Label Grid.Row="1" Grid.Column="0" Text="Is Logged In:" FontAttributes="Bold"/>
+                        <Label Grid.Row="1" Grid.Column="1" Text="{Binding IsLoggedIn}"/>
+                        
+                        <Label Grid.Row="2" Grid.Column="0" Text="Auth Token:" FontAttributes="Bold"/>
+                        <Label Grid.Row="2" Grid.Column="1" Text="{Binding AuthToken}" LineBreakMode="CharacterWrap"/>
+                    </Grid>
+                    
+                    <Button Text="Clear Session" 
+                            Command="{Binding ClearSessionCommand}"
+                            BackgroundColor="#dc3545"/>
+                </VerticalStackLayout>
+            </Frame>
+
+            <!-- Device Info Section -->
+            <Frame BorderColor="Gray" CornerRadius="5" Padding="10" Margin="0,0,0,15">
+                <VerticalStackLayout Spacing="10">
+                    <Label Text="📱 Device Info" FontSize="18" FontAttributes="Bold"/>
+                    
+                    <Grid ColumnDefinitions="Auto,*" RowDefinitions="Auto,Auto,Auto" RowSpacing="10" ColumnSpacing="10">
+                        <Label Grid.Row="0" Grid.Column="0" Text="App Version:" FontAttributes="Bold"/>
+                        <Label Grid.Row="0" Grid.Column="1" Text="{Binding AppVersion}"/>
+                        
+                        <Label Grid.Row="1" Grid.Column="0" Text="Platform:" FontAttributes="Bold"/>
+                        <Label Grid.Row="1" Grid.Column="1" Text="{Binding DevicePlatform}"/>
+                        
+                        <Label Grid.Row="2" Grid.Column="0" Text="Device:" FontAttributes="Bold"/>
+                        <Label Grid.Row="2" Grid.Column="1" Text="{Binding DeviceInfo}"/>
+                    </Grid>
+                </VerticalStackLayout>
+            </Frame>
+
+            <!-- Logs Section -->
+            <Frame BorderColor="Gray" CornerRadius="5" Padding="10" Margin="0,0,0,15">
+                <VerticalStackLayout Spacing="10">
+                    <Grid ColumnDefinitions="*,Auto,Auto">
+                        <Label Grid.Column="0" Text="📋 Logs" FontSize="18" FontAttributes="Bold"/>
+                        <Button Grid.Column="1" Text="Refresh" 
+                                Command="{Binding RefreshLogsCommand}"
+                                BackgroundColor="#17a2b8"
+                                WidthRequest="80"
+                                HeightRequest="35"
+                                Margin="0,0,5,0"
+                                FontSize="12"/>
+                        <Button Grid.Column="2" Text="Clear" 
+                                Command="{Binding ClearLogsCommand}"
+                                BackgroundColor="#dc3545"
+                                WidthRequest="80"
+                                HeightRequest="35"
+                                FontSize="12"/>
+                    </Grid>
+                    
+                    <CollectionView ItemsSource="{Binding LogEntries}" 
+                                  HeightRequest="300"
+                                  SelectionMode="None">
+                        <CollectionView.ItemTemplate>
+                            <DataTemplate>
+                                <Grid Padding="5" ColumnDefinitions="Auto,Auto,*" ColumnSpacing="10">
+                                    <Label Grid.Column="0" Text="{Binding Timestamp}" FontSize="12" VerticalOptions="Center"/>
+                                    <Label Grid.Column="1" Text="{Binding Level}" TextColor="{Binding LevelColor}" FontAttributes="Bold" FontSize="12" VerticalOptions="Center"/>
+                                    <Label Grid.Column="2" Text="{Binding Message}" FontSize="12" VerticalOptions="Center" LineBreakMode="WordWrap"/>
+                                </Grid>
+                            </DataTemplate>
+                        </CollectionView.ItemTemplate>
+                    </CollectionView>
+                </VerticalStackLayout>
+            </Frame>
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

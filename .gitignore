@@ -15,6 +15,10 @@ captures/
 *.apk
 output.json
 
+# Project specific ignores
+temp_repo/
+temp_repo/**
+
 # IntelliJ
 *.iml
 .idea/
