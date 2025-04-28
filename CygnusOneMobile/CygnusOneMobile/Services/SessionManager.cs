@@ -108,11 +108,13 @@ namespace CygnusOneMobile.Services
         {
             try
             {
-                // Remove secure storage immediately rather than using Task.Run
-                SecureStorage.Default.Remove(_tokenKey);
-                Preferences.Default.Remove(_userIdKey);
-                Preferences.Default.Remove(_userNameKey);
-                Preferences.Default.Remove(_userEmailKey);
+                // Use Task.Run to perform the operations asynchronously
+                await Task.Run(() => {
+                    SecureStorage.Default.Remove(_tokenKey);
+                    Preferences.Default.Remove(_userIdKey);
+                    Preferences.Default.Remove(_userNameKey);
+                    Preferences.Default.Remove(_userEmailKey);
+                });
                 
                 _logger?.Log("Session cleared", LogLevel.Warning);
             }
